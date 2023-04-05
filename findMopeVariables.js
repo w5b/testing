@@ -9,6 +9,7 @@ let developer = {
   key: 0,
   start: 1,
   amount: 3,
+  filter: /_\w+/g,
 }
 
 let playGame = {
@@ -19,6 +20,18 @@ let playGame = {
   key: 0,
   start: 0,
   amount: 1,
+  filter: /\w+\(/
+}
+
+let webSocketObject = {
+  rgx: new RegExp(/ => \{\n\s+\w+ = new/g),
+  names: [
+    " // WebSocketObject",
+  ],
+  key: 0,
+  start: 0,
+  amount: 1,
+  filter: /\w+/
 }
 
 function findRegex(rgx, objectKey, start, amount, names, filter = null) {
@@ -41,5 +54,6 @@ function findRegex(rgx, objectKey, start, amount, names, filter = null) {
   return finalString;
 }
 
-console.log(findRegex(developer.rgx, developer.key, developer.start, developer.amount, developer.names, /_\w+/g));
-console.log(findRegex(playGame.rgx, playGame.key, playGame.start, playGame.amount, playGame.names));
+console.log(findRegex(developer.rgx, developer.key, developer.start, developer.amount, developer.names, developer.filter));
+console.log(findRegex(playGame.rgx, playGame.key, playGame.start, playGame.amount, playGame.names, playGame.filter));
+console.log(findRegex(webSocketObject.rgx, webSocketObject.key, webSocketObject.start, webSocketObject.amount, webSocketObject.names, webSocketObject.filter));

@@ -64,7 +64,7 @@ let myPlayerId = {
 function findRegex(obj) {
   let rgxObjectKeys = string.match(obj.rgx)
   if (rgxObjectKeys) rgxObjectKeys = rgxObjectKeys[obj.key];
-  else return 'not matched';
+  else return '';
   let finalString = [];
   if (!obj.split) {
     if (obj.filter) {
@@ -105,9 +105,7 @@ function findRegex(obj) {
   return finalString;
 }
 
-let finalObject = [];
-finalObject = [...findRegex(developer), ...findRegex(playGame), ...findRegex(webSocketObject), ...findRegex(gameObjectsObject), ...findRegex(myPlayerId)];
-
+let finalObject = [...findRegex(developer), ...findRegex(playGame), ...findRegex(webSocketObject), ...findRegex(gameObjectsObject), ...findRegex(myPlayerId)];
 let finalString = '';
 
 for (let key in finalObject) {

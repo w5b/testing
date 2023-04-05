@@ -45,7 +45,7 @@ let gameObjectsObject = {
   key: 0,
   start: 1,
   amount: 2,
-  filter: null,
+  filter: /\w+/g,
   split: ',',
 }
 
@@ -73,12 +73,12 @@ function findRegex(obj) {
     if (obj.filter) {
       for (let i = 0; i < rgxObjectKeys.length; i++) {
         let variables = rgxObjectKeys[i].match(obj.filter);
-        for (let j = obj.start; j < obj.start + obj.amount; j++) {
-          finalString.push(variables[j]);
+        if (i >= obj.start && i <= obj.amount) {
+          finalString.push(variables);
         }
-        for (let n = 0; n < obj.names.length; n++) {
-          finalString[n] += obj.names[n];
-        }
+      }
+      for (let n = 0; n < obj.names.length; n++) {
+        finalString[n] += obj.names[n];
       }
     }
     else {
@@ -93,7 +93,13 @@ function findRegex(obj) {
   return finalString;
 }
 
-console.log(findRegex(developer));
-console.log(findRegex(playGame));
-console.log(findRegex(webSocketObject));
-console.log(findRegex(gameObjectsObject));
+let finalObject = [];
+finalObject = [...findRegex(developer), ...findRegex(playGame), ...findRegex(webSocketObject), ...findRegex(gameObjectsObject)];
+
+let finalString = '';
+
+for (let key in finalObject) {
+  finalString += finalObject[key] + '\n';
+}
+
+console.log(finalString);

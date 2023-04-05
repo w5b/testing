@@ -15,19 +15,19 @@ let developer = {
 let playGame = {
   rgx: new RegExp(/function \w+\(\w+\) \{\n!/g),
   names: [
-    " //playGame function",
+    " //playGameFunction",
   ],
   key: 0,
   start: 0,
   amount: 1,
-  filter: / \w+/g,
+  filter: /\_\w+/g,
   split: null,
 }
 
 let webSocketObject = {
   rgx: new RegExp(/ => \{\n\s+\w+ = new/g),
   names: [
-    " // WebSocketObject",
+    " //WebSocketObject",
   ],
   key: 0,
   start: 0,
@@ -39,8 +39,8 @@ let webSocketObject = {
 let gameObjectsObject = {
   rgx: new RegExp(/0, \w+ = \{\}. \w+ = \[\], \w+ = \[\]./g),
   names: [
-    " // gameObjectsById",
-    " // gameObjects",
+    " //gameObjectsById",
+    " //gameObjects",
   ],
   key: 0,
   start: 1,
@@ -52,7 +52,7 @@ let gameObjectsObject = {
 let myPlayerId = {
   rgx: new RegExp(/= null, \w+ = \w+\['readuint32'\]/gi),
   names: [
-    " // myPlayerId",
+    " //myPlayerId",
   ],
   key: 0,
   start: 0,

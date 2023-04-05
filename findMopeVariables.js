@@ -49,6 +49,18 @@ let gameObjectsObject = {
   split: ',',
 }
 
+let myPlayerId = {
+  rgx: new RegExp(/= null, \w+ = \w+\['readuint32'\]/gi),
+  names: [
+    " // myPlayerId",
+  ],
+  key: 0,
+  start: 0,
+  amount: 1,
+  filter: /\w+ /g,
+}
+
+
 function findRegex(obj) {
   let rgxObjectKeys = string.match(obj.rgx)
   if (rgxObjectKeys) rgxObjectKeys = rgxObjectKeys[obj.key];
@@ -94,7 +106,7 @@ function findRegex(obj) {
 }
 
 let finalObject = [];
-finalObject = [...findRegex(developer), ...findRegex(playGame), ...findRegex(webSocketObject), ...findRegex(gameObjectsObject)];
+finalObject = [...findRegex(developer), ...findRegex(playGame), ...findRegex(webSocketObject), ...findRegex(gameObjectsObject), ...findRegex(myPlayerId)];
 
 let finalString = '';
 

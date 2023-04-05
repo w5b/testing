@@ -1,6 +1,5 @@
 
 const string = require('./gameClient.js')
-console.log(string)
 let devModEtc = {
   rgx: new RegExp(/= 0x0,[\n\s]+\w+ = !\[\].\n\w+ = !\[\].[\s\S\n]*?gCanvas/g),
   names: [

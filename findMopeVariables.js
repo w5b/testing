@@ -52,7 +52,7 @@ let gameObjectsObject = {
 let myPlayerId = {
   rgx: new RegExp(/= null, \w+ = \w+\['readuint32'\]/gi),
   names: [
-    " //myPlayerId",
+    "//myPlayerId",
   ],
   key: 0,
   start: 0,

@@ -20,7 +20,7 @@ let playGame = {
   key: 0,
   start: 0,
   amount: 1,
-  filter: /\w+\(/,
+  filter: / \w+/g,
   split: null,
 }
 

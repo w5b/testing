@@ -34,26 +34,26 @@ let webSocketObject = {
   filter: /\w+/
 }
 
-function findRegex(rgx, objectKey, start, amount, names, filter = null) {
-  let rgxObjectKeys = string.match(rgx)
-  if (rgxObjectKeys) rgxObjectKeys = rgxObjectKeys[objectKey];
+function findRegex(obj) {
+  let rgxObjectKeys = string.match(obj.rgx)
+  if (rgxObjectKeys) rgxObjectKeys = rgxObjectKeys[obj.key];
   else return 'not matched';
   let finalString = [];
-  if (filter) {
-    let variables = rgxObjectKeys.match(filter);
-    for (let i = start; i < start + amount; i++) {
+  if (obj.filter) {
+    let variables = rgxObjectKeys.match(obj.filter);
+    for (let i = obj.start; i < obj.start + obj.amount; i++) {
       finalString.push(variables[i]);
     }
-    for (let i = 0; i < names.length; i++) {
-      finalString[i] += names[i];
+    for (let i = 0; i < obj.names.length; i++) {
+      finalString[i] += obj.names[i];
     }
   }
   else {
-    finalString.push(rgxObjectKeys + names[0]);
+    finalString.push(rgxObjectKeys + obj.names[0]);
   }
   return finalString;
 }
 
-console.log(findRegex(developer.rgx, developer.key, developer.start, developer.amount, developer.names, developer.filter));
-console.log(findRegex(playGame.rgx, playGame.key, playGame.start, playGame.amount, playGame.names, playGame.filter));
-console.log(findRegex(webSocketObject.rgx, webSocketObject.key, webSocketObject.start, webSocketObject.amount, webSocketObject.names, webSocketObject.filter));
+console.log(findRegex(developer));
+console.log(findRegex(playGame));
+console.log(findRegex(webSocketObject));

@@ -1,5 +1,5 @@
 const string = require('./gameClient.js')
-let devModEtc = {
+let developer = {
   rgx: new RegExp(/= 0x0,[\n\s]+\w+ = !\[\].\n\w+ = !\[\].[\s\S\n]*?gCanvas/g),
   names: [
     " //isSuperDev",
@@ -41,5 +41,5 @@ function findRegex(rgx, objectKey, start, amount, names, filter = null) {
   return finalString;
 }
 
-console.log(findRegex(devModEtc.rgx, devModEtc.key, devModEtc.start, devModEtc.amount, devModEtc.names, /_\w+/g));
+console.log(findRegex(developer.rgx, developer.key, developer.start, developer.amount, developer.names, /_\w+/g));
 console.log(findRegex(playGame.rgx, playGame.key, playGame.start, playGame.amount, playGame.names));

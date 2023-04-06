@@ -1,0 +1,10 @@
+_0x105b7e //isSuperDev
+_0x3810b2 //devMode_num
+_0x508d6e //devMode_zoomEnabled
+_0x4dbb40 //playGameFunction
+_0x2a3c07 //WebSocketObject
+_0xddec75 //gameObjectsById
+_0x43fa6e //gameObjects
+_0x46868a //myPlayerId
+await _0x52186b(_0x248195) //add the server
+_0x379271(_0xdad106) //connect to it

@@ -1,4 +1,5 @@
 const string = require('./gameClient.js')
+const fs = require('fs');
 let developer = {
   rgx: new RegExp(/= 0x0,[\n\s]+\w+ = !\[\].\n\w+ = !\[\].[\s\S\n]*?gCanvas/g),
   names: [
@@ -129,4 +130,7 @@ for (let key in finalObject) {
   finalString += finalObject[key] + '\n';
 }
 
-console.log(finalString);
+fs.writeFile("variables.txt", finalString, (err) => {
+  if (err)
+    console.log(err);
+});

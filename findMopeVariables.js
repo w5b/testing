@@ -73,6 +73,17 @@ let addServer = {
   split: '\n',
 }
 
+let mapObject = {
+  rgx: new RegExp(/\w+ = new \w+\(\w+\);[\s\S\n]*?getcolorfor/gi),
+  names: [
+    " // mapObject",
+  ],
+  key: 1,
+  start: 0,
+  amount: 1,
+  filter: /\w+/,
+}
+
 
 function findRegex(obj) {
   let rgxObjectKeys = string.match(obj.rgx)
@@ -122,7 +133,7 @@ let finalObject = [
   ...findRegex(developer),
   ...findRegex(playGame), ...findRegex(webSocketObject),
   ...findRegex(gameObjectsObject), ...findRegex(myPlayerId),
-  ...findRegex(addServer),
+  ...findRegex(addServer), findRegex(mapObject),
 ];
 let finalString = '';
 

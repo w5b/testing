@@ -8,3 +8,4 @@ _0x43fa6e //gameObjects
 _0x46868a //myPlayerId
 await _0x52186b(_0x248195) //add the server
 _0x379271(_0xdad106) //connect to it
+_0x3a73d2 // mapObject

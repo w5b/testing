@@ -48,7 +48,6 @@ let gameObjectsObject = {
   filter: /\w+/g,
   split: ',',
 }
-
 let myPlayerId = {
   rgx: new RegExp(/= null, \w+ = \w+\['readuint32'\]/gi),
   names: [
@@ -58,6 +57,19 @@ let myPlayerId = {
   start: 0,
   amount: 1,
   filter: /\w+ /g,
+}
+
+let addServer = {
+  rgx: new RegExp(/const \w+ = await \w+\(\w+\);[\S\s\n]*?;/gi),
+  names: [
+    " //add the server",
+    " //connect to it",
+  ],
+  key: 0,
+  start: 0,
+  amount: 2,
+  filter: /(await )?\w+\(\w+\)/gi,
+  split: '\n',
 }
 
 
@@ -105,7 +117,12 @@ function findRegex(obj) {
   return finalString;
 }
 
-let finalObject = [...findRegex(developer), ...findRegex(playGame), ...findRegex(webSocketObject), ...findRegex(gameObjectsObject), ...findRegex(myPlayerId)];
+let finalObject = [
+  ...findRegex(developer),
+  ...findRegex(playGame), ...findRegex(webSocketObject),
+  ...findRegex(gameObjectsObject), ...findRegex(myPlayerId),
+  ...findRegex(addServer),
+];
 let finalString = '';
 
 for (let key in finalObject) {
